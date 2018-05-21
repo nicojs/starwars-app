@@ -15,15 +15,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let episode of episodes">
-          <td>{{episode.title}}</td>
-          <td>{{episode.releaseDate}}</td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <button (click)="episodes.push({name: 'new', year: 2018})">+</button>
-            <button (click)="episodes.pop()">-</button>
-          </td>
+        <tr *ngFor="let episode of episodes" [class.table-primary]="episode.selected" (mouseleave)="episode.selected = false" (mouseenter)="episode.selected = true" >
+          <td>{{episode | episode}}</td>
+          <td>{{episode.releaseDate | date}}</td>
         </tr>
       </tbody>
     </table>

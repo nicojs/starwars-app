@@ -1,15 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { AppComponent } from './app.component';
+import { registerLocaleData } from '@angular/common';
+import localeNL from '@angular/common/locales/nl';
+import { EpisodePipe } from './episode.pipe';
 
+registerLocaleData(localeNL);
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EpisodePipe
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'nl'
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
