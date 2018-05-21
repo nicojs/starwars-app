@@ -8,7 +8,18 @@ import { Episode } from '../models/Episode';
 export class EpisodePipe implements PipeTransform {
 
   transform(value: Episode, args?: any): any {
-    console.log('Inside episode pipe');
-    return `${value.title} (${value.releaseDate.getFullYear()})`;
+    if (value) {
+      return `${value.title}${this.year(value.releaseDate)}`;
+    } else {
+      return '';
+    }
+  }
+
+  private year(value: Date) {
+    if (value) {
+      return ` (${value.getFullYear()})`;
+    } else {
+      return '';
+    }
   }
 }

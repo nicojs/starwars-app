@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Episode } from '../models/Episode';
+import { Episode } from './models/Episode';
 
 @Component({
   selector: 'sw-root',
