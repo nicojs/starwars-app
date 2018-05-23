@@ -17,7 +17,4 @@ export class AppComponent {
   }
 
   title = 'Star wars';
-
-
-
 }
