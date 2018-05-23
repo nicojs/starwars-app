@@ -1,0 +1,14 @@
+<table class="col-md-12 table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Release year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let episode of episodes" [class.table-primary]="episode.selected" (mouseleave)="episode.selected = false" (mouseenter)="episode.selected = true">
+      <td>{{episode | episode}}</td>
+      <td>{{episode.releaseDate | date}}</td>
+    </tr>
+  </tbody>
+</table>

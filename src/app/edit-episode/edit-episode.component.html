@@ -1,0 +1,23 @@
+<form class="col-md-12" (ngSubmit)="saveEpisode()" [formGroup]="episodeForm">
+  <div class="form-group">
+    <label for="titleInput">Title</label>
+    <input id="titleInput" [class.is-invalid]="episodeForm.controls.title.invalid && episodeForm.controls.title.dirty"
+      type="text" class="form-control" formControlName="title">
+    <div *ngIf="episodeForm.controls.title.dirty && episodeForm.controls.title.errors" class="invalid-feedback">
+      <span [hidden]="!episodeForm.controls.title.errors.required">
+        Please enter the Episode title
+      </span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="releaseDateInput">Release date</label>
+    <input class="form-control" [class.is-invalid]="episodeForm.controls.releaseDate.invalid" formControlName="releaseDate"
+      type="date" id="releaseDateInput">
+    <div *ngIf="episodeForm.controls.releaseDate.dirty && episodeForm.controls.releaseDate.errors" class="invalid-feedback">
+      <span [hidden]="!episodeForm.controls.releaseDate.errors.dateRange">
+        {{episodeForm.controls.releaseDate.errors.dateRange}}
+      </span>
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit">Add</button>
+</form>

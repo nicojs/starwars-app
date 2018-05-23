@@ -1,0 +1,20 @@
+<form #characterForm="ngForm" class="col-md-12" (ngSubmit)="saveCharacter(characterForm)">
+  <div class="form-group">
+    <label for="nameInput">Name</label>
+    <input id="nameInput" [class.is-invalid]="nameInput.invalid && nameInput.touched" class="form-control" [(ngModel)]="newCharacter.name"
+      #nameInput="ngModel" type="text" name="name" required>
+    <div *ngIf="nameInput.errors" class="invalid-feedback">
+      <div [hidden]="!nameInput.errors.required">Name is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="ageInput">Age</label>
+    <input #ageInput="ngModel" [class.is-invalid]="ageInput.invalid && ageInput.dirty" type="number" class="form-control" [(ngModel)]="newCharacter.age"
+      name="age" required customMin="0">
+    <div *ngIf="ageInput.errors" class="invalid-feedback">
+      <div [hidden]="!ageInput.errors.required">Age is required</div>
+      <div [hidden]="!ageInput.errors.customMin">Age should be larger than 0</div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Add</button>
+</form>

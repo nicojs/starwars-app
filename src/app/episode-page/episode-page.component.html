@@ -1,0 +1,9 @@
+<div class="row">
+  <h2 class="col-md-12">Episodes</h2>
+</div>
+<sw-episode-list [episodes]="episodes" class="row"></sw-episode-list>
+
+<div class="row">
+  <h2 class="col-md-12">Add Episode</h2>
+</div>
+<sw-edit-episode (edited)="saveEpisode($event)" class="row"></sw-edit-episode>

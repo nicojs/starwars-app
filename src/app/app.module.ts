@@ -6,6 +6,12 @@ import localeNL from '@angular/common/locales/nl';
 import { EpisodePipe } from './episode/episode.pipe';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CustomMinDirective } from './custom-min-validator.directive';
+import { EpisodeListComponent } from './episode-list/episode-list.component';
+import { EpisodePageComponent } from './episode-page/episode-page.component';
+import { EditEpisodeComponent } from './edit-episode/edit-episode.component';
+import { EditCharacterComponent } from './edit-character/edit-character.component';
+import { CharacterListComponent } from './character-list/character-list.component';
+import { CharacterPageComponent } from './character-page/character-page.component';
 
 registerLocaleData(localeNL);
 
@@ -13,7 +19,13 @@ registerLocaleData(localeNL);
   declarations: [
     AppComponent,
     EpisodePipe,
-    CustomMinDirective
+    CustomMinDirective,
+    EpisodeListComponent,
+    EpisodePageComponent,
+    EditEpisodeComponent,
+    EditCharacterComponent,
+    CharacterListComponent,
+    CharacterPageComponent
   ],
   imports: [
     BrowserModule,
