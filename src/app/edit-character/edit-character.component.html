@@ -9,7 +9,7 @@
   </div>
   <div class="form-group">
     <label for="ageInput">Age</label>
-    <input #ageInput="ngModel" [class.is-invalid]="ageInput.invalid && ageInput.dirty" type="number" class="form-control" [(ngModel)]="newCharacter.age"
+    <input #ageInput="ngModel" type="number" class="form-control" [(ngModel)]="newCharacter.age"
       name="age" required customMin="0">
     <div *ngIf="ageInput.errors" class="invalid-feedback">
       <div [hidden]="!ageInput.errors.required">Age is required</div>

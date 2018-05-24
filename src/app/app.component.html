@@ -1,7 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="container">
   <div class="row">
-    <h1 class="col-md-12 starwars">{{ title }}!</h1>
+    <h1 class="col-md-12 starwars" [(swContent)]="title"></h1>
+    title is: {{title}}
   </div>
   <sw-episode-page></sw-episode-page>
   <sw-character-page></sw-character-page>

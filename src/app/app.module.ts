@@ -5,7 +5,7 @@ import { registerLocaleData } from '@angular/common';
 import localeNL from '@angular/common/locales/nl';
 import { EpisodePipe } from './episode/episode.pipe';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { CustomMinDirective } from './custom-min-validator.directive';
+import { CustomMinDirective } from './validators/custom-min-validator.directive';
 import { EpisodeListComponent } from './episode-list/episode-list.component';
 import { EpisodePageComponent } from './episode-page/episode-page.component';
 import { EditEpisodeComponent } from './edit-episode/edit-episode.component';
@@ -14,6 +14,8 @@ import { CharacterListComponent } from './character-list/character-list.componen
 import { CharacterPageComponent } from './character-page/character-page.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpErrorHandler } from './HttpErrorHandler';
+import { InputDirective } from './general/input.directive';
+import { ContentDirective } from './general/content.directive';
 
 registerLocaleData(localeNL);
 
@@ -27,7 +29,9 @@ registerLocaleData(localeNL);
     EditEpisodeComponent,
     EditCharacterComponent,
     CharacterListComponent,
-    CharacterPageComponent
+    CharacterPageComponent,
+    InputDirective,
+    ContentDirective
   ],
   imports: [
     BrowserModule,

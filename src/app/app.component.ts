@@ -4,8 +4,6 @@ import { FormGroup, FormControl, Validators, AbstractControl, NgForm } from '@an
 import { dateRange } from './validators/dateRange';
 import { Character } from './models/Character';
 
-
-
 @Component({
   selector: 'sw-root',
   templateUrl: './app.component.html',
