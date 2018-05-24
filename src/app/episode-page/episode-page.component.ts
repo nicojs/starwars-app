@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Episode } from '../models/Episode';
+import { Episode, EpisodeJson } from '../models/Episode';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'sw-episode-page',
@@ -7,24 +9,23 @@ import { Episode } from '../models/Episode';
 })
 export class EpisodePageComponent implements OnInit {
 
-  episodes = [
-    new Episode(0, 'A New Hope', new Date('1977-5-25')),
-    new Episode(1, 'The Empire Strikes Back', new Date('1980-5-21')),
-    new Episode(2, 'Return of the Jedi', new Date('1983-5-25')),
-    new Episode(3, 'The Phantom Menace', new Date('1999-5-19')),
-    new Episode(4, 'Attack of the Clones', new Date('2002-5-16')),
-    new Episode(5, 'Revenge of the Sith', new Date('2005-5-19')),
-    new Episode(6, 'The Force Awakens', new Date('2015-12-14')),
-    new Episode(7, 'The Last Jedi', new Date('2017-12-15'))
-  ];
+  episodes: Episode[];
 
-  constructor() { }
+  constructor(private http: HttpClient) {
+  }
 
   ngOnInit() {
+    this.http.get<EpisodeJson[]>('http://localhost:3111/episodes').pipe(
+      map(episodes => episodes.map(e => new Episode(e.id, e.title, new Date(e.releaseDate))))
+    ).subscribe(episodes => this.episodes = episodes);
   }
 
   saveEpisode(episode: Episode) {
-    this.episodes.push(episode);
+    // This should normally be done in the backend, for demo sake doing it here (json-server isn't *that* smart)
+    delete episode.id;
+    this.http.post<EpisodeJson>('http://localhost:3111/episodes', episode).pipe(
+      map(ep => new Episode(ep.id, ep.title, new Date(ep.releaseDate)))
+    ).subscribe(episode => this.episodes.push(episode));
   }
 
 }

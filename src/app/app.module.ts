@@ -12,6 +12,7 @@ import { EditEpisodeComponent } from './edit-episode/edit-episode.component';
 import { EditCharacterComponent } from './edit-character/edit-character.component';
 import { CharacterListComponent } from './character-list/character-list.component';
 import { CharacterPageComponent } from './character-page/character-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData(localeNL);
 
@@ -30,7 +31,8 @@ registerLocaleData(localeNL);
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     {

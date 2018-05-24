@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Character } from '../models/Character';
+import { Character, CharacterJson } from '../models/Character';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'sw-character-page',
@@ -8,27 +10,24 @@ import { Character } from '../models/Character';
 })
 export class CharacterPageComponent implements OnInit {
 
-  characters: Character[] = [
-    new Character(0, 'Han Solo', 63),
-    new Character(1, 'Finn', 23),
-    new Character(2, 'Princess Leia', 53),
-    new Character(3, 'Luke Skywalker', 53),
-    new Character(4, 'Qui-Gon Jinn', 60),
-    new Character(5, 'Obi-Wan Kenobi', 57),
-    new Character(6, 'Darth Maul', 32),
-    new Character(7, 'Rey', 19),
-    new Character(8, 'Mace Windu', 53),
-    new Character(9, 'Shmi Skywalker', 5),
-    new Character(10, 'R2-D2', 99)
-  ];
-
-  constructor() { }
+  constructor(private http: HttpClient) { }
+  characters: Character[];
 
   add(char: Character) {
-    this.characters.push(char);
+    // This should normally be done in the backend, for demo sake doing it here (json-server isn't *that* smart)
+    delete char.id;
+    this.http.post<CharacterJson>('http://localhost:3111/characters', char).pipe(
+      map(char => new Character(char.id, char.name, char.age))
+    )
+    .subscribe(char => {
+      this.characters.push(char);
+    });
   }
 
   ngOnInit() {
+    this.http.get<CharacterJson[]>('http://localhost:3111/characters').pipe(
+      map(characters => characters.map(c => new Character(c.id, c.name, c.age)))
+    ).subscribe(characters => this.characters = characters);
   }
 
 }
