@@ -12,7 +12,8 @@ import { EditEpisodeComponent } from './edit-episode/edit-episode.component';
 import { EditCharacterComponent } from './edit-character/edit-character.component';
 import { CharacterListComponent } from './character-list/character-list.component';
 import { CharacterPageComponent } from './character-page/character-page.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpErrorHandler } from './HttpErrorHandler';
 
 registerLocaleData(localeNL);
 
@@ -38,6 +39,11 @@ registerLocaleData(localeNL);
     {
       provide: LOCALE_ID,
       useValue: 'nl'
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorHandler,
+      multi: true
     }
   ],
   bootstrap: [AppComponent]
