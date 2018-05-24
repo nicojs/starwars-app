@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Character } from '../models/Character';
+import { Character } from '../../models/Character';
 
 @Component({
   selector: 'sw-character-list',

@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EpisodeListComponent } from './episode-list.component';
 import { EpisodePipe } from '../episode/episode.pipe';
-import { Episode } from '../models/Episode';
+import { Episode } from '../../models/Episode';
 
 describe('EpisodeListComponent', () => {
   let component: EpisodeListComponent;

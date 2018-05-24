@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { dateRange } from '../validators/dateRange';
-import { Episode } from '../models/Episode';
+import { dateRange } from '../../validators/dateRange';
+import { Episode } from '../../models/Episode';
 
 @Component({
   selector: 'sw-edit-episode',

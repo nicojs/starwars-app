@@ -1,5 +1,5 @@
 import { EpisodePipe } from './episode.pipe';
-import { Episode } from '../models/Episode';
+import { Episode } from '../../models/Episode';
 
 describe('Episode pipe', () => {
 

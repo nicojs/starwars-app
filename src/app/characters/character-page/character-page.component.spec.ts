@@ -3,7 +3,7 @@ import { CharacterPageComponent } from './character-page.component';
 import { CharacterListComponent } from '../character-list/character-list.component';
 import { EditCharacterComponent } from '../edit-character/edit-character.component';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { CharacterJson } from '../models/Character';
+import { CharacterJson } from '../../models/Character';
 import { FormsModule } from '@angular/forms';
 
 

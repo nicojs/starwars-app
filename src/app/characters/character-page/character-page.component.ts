@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Character, CharacterJson } from '../models/Character';
+import { Character, CharacterJson } from '../../models/Character';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { Character } from '../models/Character';
+import { Character } from '../../models/Character';
 import { NgForm } from '@angular/forms';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Episode, EpisodeJson } from '../models/Episode';
+import { Episode, EpisodeJson } from '../../models/Episode';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
