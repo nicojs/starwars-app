@@ -1,0 +1,10 @@
+small { font-size: .5em; }
+
+
+input.ng-invalid.ng-touched {
+  border: 2px dotted red;
+}
+
+// ng-pristine <--> ng-dirty
+// ng-touched <--> ng-untouched
+// ng-valid <--> ng-invalid

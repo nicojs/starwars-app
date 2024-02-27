@@ -1,0 +1,14 @@
+{
+  "cSpell.words": [
+    "jedi",
+    "jedis",
+    "midichlorean",
+    "midichloreans",
+    "Obiwan",
+    "Skywalker",
+    "titlecase",
+    "Windu"
+  ],
+  "cSpell.language": "en",
+  "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }]
+}

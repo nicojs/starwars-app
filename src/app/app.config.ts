@@ -1,8 +1,9 @@
-import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { ApplicationConfig, LOCALE_ID } from '@angular/core';
+import localeNL from '@angular/common/locales/nl';
+import { DecimalPipe, registerLocaleData } from '@angular/common';
 
-import { routes } from './app.routes';
+registerLocaleData(localeNL);
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes)]
+  providers: [{ provide: LOCALE_ID, useValue: 'nl-NL' }, DecimalPipe],
 };
