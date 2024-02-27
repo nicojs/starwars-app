@@ -1,0 +1,8 @@
+<ul>
+  @for(jedi of jedis; track jedi) {
+  <li>
+    {{ jedi.name }} ({{ jedi.midichlorean | midichlorean }})
+    @if(jedi.midichlorean > 2000){ (That's a lot!) }
+  </li>
+  }
+</ul>

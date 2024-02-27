@@ -1,68 +1,17 @@
-<h1 class="display-1" [style.backgroundColor]="color">
-  {{ title | titlecase }} <small>({{ x }}, {{ y }})</small>
-</h1>
 <div class="container" (mousemove)="updatePosition($event)">
   <div class="row">
     <div class="col">
-      <h2>Jedis</h2>
-      <ul>
-        @for(jedi of jedis; track jedi) {
-        <li>
-          {{ jedi.name }} ({{ jedi.midichlorean | midichlorean }})
-          @if(jedi.midichlorean > 2000){ (That's a lot!) }
-        </li>
-        }
-      </ul>
-      <h2>Add Jedi</h2>
-      <form
-        #addJediForm="ngForm"
-        (ngSubmit)="addJedi(addJediForm)"
-        class="mb-5"
-      >
-        <div class="mb-3">
-          <label for="jediName" class="form-label">Name</label>
-          <input
-            #nameInput="ngModel"
-            [(ngModel)]="newJedi.name"
-            name="name"
-            required
-            minlength="2"
-            class="form-control"
-            id="jediName"
-          />
-          @if(nameInput.touched){ @if(nameInput.hasError('required')){
-          <span class="form-text text-danger">Required field</span>
-          } @if(nameInput.hasError('minlength')){
-          <span class="form-text text-danger">Minimal length is {{nameInput.getError('minlength').requiredLength}}</span>
-          } }
-        </div>
-        <div class="mb-3">
-          <label for="midichloreanInput" class="form-label">Midichlorean</label>
-          <input
-            #midichloreanInput="ngModel"
-            [(ngModel)]="newJedi.midichlorean"
-            required
-            name="midichlorean"
-            class="form-control"
-            id="midichloreanInput"
-          />
-          @if(midichloreanInput.touched){ @if(midichloreanInput.invalid){
-          <span class="form-text text-danger">Required field</span>
-          } }
-        </div>
-        <button
-          [disabled]="addJediForm.invalid"
-          class="btn btn-primary"
-          type="submit"
-        >
-          Add
-        </button>
-      </form>
+      <sw-title>Star-wars <small>({{ x }}, {{ y }})</small></sw-title>
+      <sw-title level="2">Jedis</sw-title>
+      <sw-jedis-list [jedis]="allJedis"></sw-jedis-list>
+      <sw-title level="2">Add Jedi</sw-title>
+      <sw-add-jedi (jediAdded)="addJedi($event)"></sw-add-jedi>
 
       <div class="mb-3">
         <label for="color" class="form-label">Color</label>
         <input id="color" class="form-control" (input)="setColor($event)" />
       </div>
+      <sw-toaster></sw-toaster>
     </div>
   </div>
 </div>
