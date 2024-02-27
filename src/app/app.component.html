@@ -1,9 +1,13 @@
 <div class="container" (mousemove)="updatePosition($event)">
   <div class="row">
     <div class="col">
-      <sw-title>Star-wars <small>({{ x }}, {{ y }})</small></sw-title>
+      <sw-title
+        >Star-wars <small>({{ x }}, {{ y }})</small></sw-title
+      >
       <sw-title level="2">Jedis</sw-title>
-      <sw-jedis-list [jedis]="allJedis"></sw-jedis-list>
+      @if(allJedis){
+      <sw-jedis-list [jedis]="allJedis | async"></sw-jedis-list>
+      }@else { Loading... }
       <sw-title level="2">Add Jedi</sw-title>
       <sw-add-jedi (jediAdded)="addJedi($event)"></sw-add-jedi>
 

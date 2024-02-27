@@ -1,0 +1,14 @@
+{
+  "jedis": [
+    {
+      "id": 0,
+      "name": "Obiwan",
+      "midichlorean": 1200
+    },
+    {
+      "id": 1,
+      "name": "Luke Skywalker",
+      "midichlorean": 2700
+    }
+  ]
+}
