@@ -1,6 +1,5 @@
 import {
   HttpTestingController,
-  HttpClientTestingModule,
   provideHttpClientTesting,
 } from '@angular/common/http/testing';
 import { JedisService } from './jedis.service';

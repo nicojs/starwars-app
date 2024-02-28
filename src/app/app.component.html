@@ -4,18 +4,9 @@
       <sw-title
         >Star-wars <small>({{ x }}, {{ y }})</small></sw-title
       >
-      <sw-title level="2">Jedis</sw-title>
-      @if(allJedis){
-      <sw-jedis-list [jedis]="allJedis | async"></sw-jedis-list>
-      }@else { Loading... }
-      <sw-title level="2">Add Jedi</sw-title>
-      <sw-add-jedi (jediAdded)="addJedi($event)"></sw-add-jedi>
+      <sw-menu></sw-menu>
+      <router-outlet></router-outlet>
 
-      <div class="mb-3">
-        <label for="color" class="form-label">Color</label>
-        <input id="color" class="form-control" (input)="setColor($event)" />
-      </div>
-      <sw-toaster></sw-toaster>
     </div>
   </div>
 </div>

@@ -1,9 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 
 @Component({
   selector: 'sw-toaster',
-  standalone: true,
-  imports: [],
   template: `
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
       <div
@@ -45,3 +43,11 @@ export class ToasterComponent {
     this.displayState = 'hide';
   }
 }
+
+
+
+@NgModule({
+  declarations: [ToasterComponent],
+  exports: [ToasterComponent]
+})
+export class ToasterModule {}

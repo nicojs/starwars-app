@@ -1,10 +1,12 @@
-import { ApplicationConfig, LOCALE_ID } from '@angular/core';
+import { ApplicationConfig, LOCALE_ID, inject } from '@angular/core';
 import localeNL from '@angular/common/locales/nl';
 import { DecimalPipe, registerLocaleData } from '@angular/common';
 import { JedisService } from './jedis.service';
 import { BACKEND_URL } from './injection-tokens';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './interceptors/auth.interceptor';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
+import { appRoutes } from './app.routes';
 
 registerLocaleData(localeNL);
 
@@ -15,5 +17,6 @@ export const appConfig: ApplicationConfig = {
     DecimalPipe,
     JedisService,
     provideHttpClient(withInterceptors([authInterceptor])),
+    provideRouter(appRoutes, withComponentInputBinding())
   ],
 };
