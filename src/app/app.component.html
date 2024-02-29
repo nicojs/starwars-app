@@ -4,9 +4,12 @@
       <sw-title
         >Star-wars <small>({{ x }}, {{ y }})</small></sw-title
       >
+      <p [(swContent)]="slogan"></p>
       <sw-menu></sw-menu>
       <router-outlet></router-outlet>
+      <div swAttractBorder="dotted 2px blue" swAttract="red">Attract</div>
 
+      <button (click)="nextTick()">{{count()}}</button>
     </div>
   </div>
 </div>

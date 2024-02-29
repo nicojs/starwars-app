@@ -1,7 +1,7 @@
-import { ApplicationConfig, LOCALE_ID, inject } from '@angular/core';
+import { ApplicationConfig, LOCALE_ID } from '@angular/core';
 import localeNL from '@angular/common/locales/nl';
 import { DecimalPipe, registerLocaleData } from '@angular/common';
-import { JedisService } from './jedis.service';
+import { JedisService } from './jedis/jedis.service';
 import { BACKEND_URL } from './injection-tokens';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './interceptors/auth.interceptor';

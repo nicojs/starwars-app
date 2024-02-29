@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
-import { TitleComponent } from '../../title/title.component';
+import { Component, OnDestroy, inject } from '@angular/core';
+import { TitleComponent } from '../../shared/title/title.component';
 import { EpisodesService } from '../episodes.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Subject, interval, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'sw-episodes-page',
@@ -17,6 +18,17 @@ import { RouterModule } from '@angular/router';
     </ul> `,
   imports: [TitleComponent, CommonModule, RouterModule],
 })
-export class EpisodesPageComponent {
+export class EpisodesPageComponent implements OnDestroy {
   episode$ = inject(EpisodesService).getAll();
+
+  destroy$ = new Subject<void>();
+
+  constructor() {
+    interval(1000).pipe(takeUntil(this.destroy$)).subscribe(console.log);
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 }

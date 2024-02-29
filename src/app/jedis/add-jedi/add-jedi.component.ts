@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { Jedi } from '../models/jedi';
+import { Jedi } from '../../models/jedi';
 
 @Component({
   selector: 'sw-add-jedi',

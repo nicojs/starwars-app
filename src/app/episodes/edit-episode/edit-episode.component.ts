@@ -1,10 +1,10 @@
 import {
   Component,
   EventEmitter,
-  Input,
   OnChanges,
   Output,
   SimpleChanges,
+  input,
 } from '@angular/core';
 import { Episode } from '../episode';
 import {
@@ -15,7 +15,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { uniqueTitleValidator } from '../validators';
-import { BehaviorSubject } from 'rxjs';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -26,16 +25,7 @@ import { CommonModule } from '@angular/common';
   styles: ``,
 })
 export class EditEpisodeComponent implements OnChanges {
-  #episode!: Episode;
-  @Input({ required: true })
-  set episode(val: Episode){
-    this.#episode = val;
-    this.episode$.next(val);
-  }
-  get episode(){
-    return this.#episode;
-  }
-  episode$ = new BehaviorSubject<Episode | undefined>(undefined);
+  episode = input.required<Episode>();
 
   @Output()
   episodeSubmitted = new EventEmitter<Episode>();
@@ -45,7 +35,7 @@ export class EditEpisodeComponent implements OnChanges {
     this.form = fb.group({
       title: fb.control('', {
         validators: [Validators.required, forbid('The Rise of Skywalker')],
-        asyncValidators: [uniqueTitleValidator(this.episode$)],
+        asyncValidators: [uniqueTitleValidator(this.episode)],
       }),
       releaseYear: fb.control('', { validators: [Validators.required] }),
     });
@@ -53,7 +43,7 @@ export class EditEpisodeComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if ('episode' in changes) {
-      this.form.reset(this.episode);
+      this.form.reset(this.episode());
     }
   }
 
@@ -64,7 +54,7 @@ export class EditEpisodeComponent implements OnChanges {
   save() {
     const updatedEpisode: Episode = {
       ...this.form.getRawValue(),
-      id: this.episode.id,
+      id: this.episode().id,
     };
     this.episodeSubmitted.emit(updatedEpisode);
   }

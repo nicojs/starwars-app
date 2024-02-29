@@ -4,10 +4,10 @@ import {
 } from '@angular/common/http/testing';
 import { JedisService } from './jedis.service';
 import { TestBed } from '@angular/core/testing';
-import { Jedi } from './models/jedi';
+import { Jedi } from '../models/jedi';
 import { lastValueFrom } from 'rxjs';
-import { BACKEND_URL } from './injection-tokens';
-import { appConfig } from './app.config';
+import { BACKEND_URL } from '../injection-tokens';
+import { appConfig } from '../app.config';
 
 describe('JedisService', () => {
   let httpController: HttpTestingController;

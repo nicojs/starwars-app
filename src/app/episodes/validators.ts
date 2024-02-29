@@ -1,11 +1,11 @@
-import { inject } from '@angular/core';
+import { Signal, inject } from '@angular/core';
 import { EpisodesService } from './episodes.service';
 import { Observable, map } from 'rxjs';
 import { Episode } from './episode';
 import { AsyncValidatorFn } from '@angular/forms';
 
 export function uniqueTitleValidator(
-  currentEpisode$: { value: Episode | undefined }
+  currentEpisode: Signal<Episode>
 ): AsyncValidatorFn {
   const episodeService = inject(EpisodesService);
 
@@ -15,7 +15,7 @@ export function uniqueTitleValidator(
     return episodeService.getAll().pipe(
       map((episodes) => {
         const existing = episodes.find(
-          (e) => e.id !== currentEpisode$.value?.id && e.title === control.value
+          (e) => e.id !== currentEpisode().id && e.title === control.value
         );
         if (existing) {
           return { uniqueTitle: { existing } };

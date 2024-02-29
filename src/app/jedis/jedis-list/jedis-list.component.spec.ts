@@ -1,10 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { JedisListComponent } from './jedis-list.component';
-import { createJedi } from '../models/jedi';
+import { Jedi, createJedi } from '../../models/jedi';
 
 describe('JedisListComponent', () => {
   let fixture: ComponentFixture<JedisListComponent>;
   let element: HTMLElement;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   let sut: JedisListComponent;
 
   beforeEach(() => {
@@ -16,7 +17,7 @@ describe('JedisListComponent', () => {
 
   it('should show the given jedis', () => {
     // Act
-    sut.jedis = [createJedi({ name: 'Obiwan' }), createJedi({ name: 'Windu' })];
+    setJedis([createJedi({ name: 'Obiwan' }), createJedi({ name: 'Windu' })]);
     fixture.detectChanges();
 
     // Assert
@@ -27,13 +28,14 @@ describe('JedisListComponent', () => {
   });
 
   it('should format the midichloreans correctly', () => {
-    sut.jedis = [createJedi({ midichlorean: 1_200 })];
+    setJedis([createJedi({ midichlorean: 1_200 })]);
+
     fixture.detectChanges();
     expect(element.querySelector('li')?.innerText).toContain('1200 mc');
   });
 
   it('should not show an additional message for 2k midichloreans', () => {
-    sut.jedis = [createJedi({ midichlorean: 2_000 })];
+    setJedis([createJedi({ midichlorean: 2_000 })]);
     fixture.detectChanges();
     expect(element.querySelector('li')?.innerText).not.toContain(
       "That's a lot"
@@ -41,8 +43,12 @@ describe('JedisListComponent', () => {
   });
 
   it('should show an additional message for 2.001 midichloreans', () => {
-    sut.jedis = [createJedi({ midichlorean: 2_001 })];
+    setJedis([createJedi({ midichlorean: 2_001 })]);
     fixture.detectChanges();
     expect(element.querySelector('li')?.innerText).toContain("That's a lot");
   });
+
+  function setJedis(jedis: Jedi[]) {
+    fixture.componentRef.setInput('jedis', jedis);
+  }
 });

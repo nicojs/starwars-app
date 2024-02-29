@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
-import { Jedi } from './models/jedi';
-import { BACKEND_URL } from './injection-tokens';
+import { Jedi } from '../models/jedi';
+import { BACKEND_URL } from '../injection-tokens';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -17,7 +17,7 @@ export class JedisService {
   }
 
   add(jedi: Jedi) {
-    return this.http.post(this.url, jedi);
+    return this.http.post<Jedi>(this.url, jedi);
   }
 }
 
