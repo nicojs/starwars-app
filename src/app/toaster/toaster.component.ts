@@ -44,8 +44,6 @@ export class ToasterComponent {
   }
 }
 
-
-
 @NgModule({
   declarations: [ToasterComponent],
   exports: [ToasterComponent]

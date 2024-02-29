@@ -1,8 +1,6 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MidichloreanPipe } from '../midichlorean/midichlorean.pipe';
 import { Jedi } from '../models/jedi';
-import { JedisService } from '../jedis.service';
-import { BACKEND_URL } from '../injection-tokens';
 
 @Component({
   selector: 'sw-jedis-list',

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, viewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { JedisService } from '../jedis.service';
 import { Jedi } from '../models/jedi';
@@ -35,11 +35,11 @@ export class JedisPageComponent {
   allJedis?: Observable<Jedi[]>;
   jedisService: JedisService;
 
-  @ViewChild(ToasterComponent)
-  toaster?: ToasterComponent;
+
+  toaster = viewChild.required(ToasterComponent);
   addJedi(jedi: Jedi) {
     this.jedisService.add(jedi).subscribe(() => {
-      this.toaster?.notifyMessage('Jedi added', `Jedi ${jedi.name} added`);
+      this.toaster().notifyMessage('Jedi added', `Jedi ${jedi.name} added`);
       this.fillJedis();
     });
   }

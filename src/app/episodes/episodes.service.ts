@@ -18,4 +18,8 @@ export class EpisodesService {
   get(id: number): Observable<Episode> {
     return this.http.get<Episode>(`${this.url}/${id}`);
   }
+
+  update(episode: Episode): Observable<Episode> {
+    return this.http.put<Episode>(`${this.url}/${episode.id}`, episode);
+  }
 }

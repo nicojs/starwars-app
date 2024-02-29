@@ -1,0 +1,42 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      [formControl]="titleControl"
+    />
+    @if(titleControl.touched ){ @if(titleControl.hasError('required')){
+    <div class="text-danger">Title is required</div>
+    } @if(titleControl.hasError('forbid')){
+    <div class="text-danger">
+      Title cannot be "{{ titleControl.getError("forbid").forbidden }}"
+    </div>
+    } @if(titleControl.hasError('uniqueTitle')){
+    <div class="text-danger">
+      Title cannot be "{{
+        titleControl.getError("uniqueTitle").existing.title
+      }}", episode already exists ({{
+        titleControl.getError("uniqueTitle").existing.releaseYear
+      }})
+    </div>
+    } }
+    <div></div>
+  </div>
+  <div class="mb-3">
+    <label for="releaseYear" class="form-label">Release Year</label>
+    <input
+      type="text"
+      class="form-control"
+      id="releaseYear"
+      formControlName="releaseYear"
+    />
+  </div>
+
+  <button [disabled]="!form.valid" type="submit" class="btn btn-primary me-3">
+    @if (form.pending) {
+    <span class="spinner-border spinner-border-sm"></span>
+    } Save
+  </button>
+</form>
