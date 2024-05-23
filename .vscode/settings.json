@@ -1,0 +1,14 @@
+{
+  "eslint.rules.customizations": [
+    {
+      "rule": "*",
+      "severity": "warn"
+    }
+  ],
+  "cSpell.words": [
+    "jedi",
+    "jedis",
+    "Jedis",
+    "Midichlorean"
+  ]
+}

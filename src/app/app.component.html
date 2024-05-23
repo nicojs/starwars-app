@@ -1,0 +1,12 @@
+<div class="container" (mousemove)="updatePosition($event)">
+  <div class="row">
+    <div class="col">
+      <sw-title
+        >Star-wars <small>({{ x }}, {{ y }})</small></sw-title
+      >
+      <sw-menu></sw-menu>
+      <router-outlet></router-outlet>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+{
+  "jedis": [
+    {
+      "id": 0,
+      "name": "Obiwan",
+      "midichlorean": 1200
+    },
+    {
+      "id": 1,
+      "name": "Luke Skywalker",
+      "midichlorean": 2700
+    }
+  ],
+  "episodes": [
+    {
+      "id": 0,
+      "title": "The Phantom Menace",
+      "releaseYear": 1999
+    },
+    {
+      "id": 1,
+      "title": "Attack of the Clones",
+      "releaseYear": 2002
+    },
+    {
+      "id": 2,
+      "title": "Revenge of the Sith",
+      "releaseYear": 2005
+    },
+    {
+      "id": 3,
+      "title": "A New Hope",
+      "releaseYear": 1977
+    },
+    {
+      "id": 4,
+      "title": "The Empire Strikes Back",
+      "releaseYear": 1980
+    },
+    {
+      "id": 5,
+      "title": "Return of the Jedi",
+      "releaseYear": 1983
+    }
+  ]
+}

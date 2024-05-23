@@ -1,0 +1,43 @@
+<form #addJediForm="ngForm" (ngSubmit)="addJedi(addJediForm)" class="mb-5">
+  <div class="mb-3">
+    <label for="jediName" class="form-label">Name</label>
+    <input
+      #nameInput="ngModel"
+      [(ngModel)]="newJedi.name"
+      name="name"
+      required
+      minlength="2"
+      class="form-control"
+      id="jediName"
+    />
+    @if(nameInput.touched){ @if(nameInput.hasError('required')){
+    <span class="form-text text-danger">Required field</span>
+    } @if(nameInput.hasError('minlength')){
+    <span class="form-text text-danger"
+      >Minimal length is
+      {{ nameInput.getError("minlength").requiredLength }}</span
+    >
+    } }
+  </div>
+  <div class="mb-3">
+    <label for="midichloreanInput" class="form-label">Midichlorean</label>
+    <input
+      #midichloreanInput="ngModel"
+      [(ngModel)]="newJedi.midichlorean"
+      required
+      name="midichlorean"
+      class="form-control"
+      id="midichloreanInput"
+    />
+    @if(midichloreanInput.touched){ @if(midichloreanInput.invalid){
+    <span class="form-text text-danger">Required field</span>
+    } }
+  </div>
+  <button
+    [disabled]="addJediForm.invalid"
+    class="btn btn-primary"
+    type="submit"
+  >
+    Add
+  </button>
+</form>

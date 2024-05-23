@@ -1,0 +1,7 @@
+<sw-title level="2">Jedis</sw-title>
+@if(allJedis){
+<sw-jedis-list [jedis]="allJedis | async"></sw-jedis-list>
+}@else { Loading... }
+<sw-title level="2">Add Jedi</sw-title>
+<sw-add-jedi (jediAdded)="addJedi($event)"></sw-add-jedi>
+<sw-toaster></sw-toaster>
