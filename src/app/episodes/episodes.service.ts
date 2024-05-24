@@ -8,6 +8,11 @@ import { BACKEND_URL } from '../injection-tokens';
   providedIn: 'root',
 })
 export class EpisodesService {
+  search(text: string): Observable<Episode[]> {
+    return this.http.get<Episode[]>(
+      `${this.url}?title=${encodeURIComponent(text)}`
+    );
+  }
   http = inject(HttpClient);
   url = `${inject(BACKEND_URL)}/episodes`;
 

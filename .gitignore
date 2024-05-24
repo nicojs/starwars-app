@@ -47,3 +47,7 @@ Thumbs.db
 # stryker temp files
 .stryker-tmp
 /reports
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

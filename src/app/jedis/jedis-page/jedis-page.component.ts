@@ -2,26 +2,26 @@ import { Component, viewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { JedisService } from '../jedis.service';
 import { Jedi } from '../jedi';
-import { ToasterComponent, ToasterModule } from '../../shared/toaster/toaster.component';
-import { CommonModule } from '@angular/common';
+import { ToasterComponent } from '../../shared/toaster/toaster.component';
+import { AsyncPipe } from '@angular/common';
 import { AddJediComponent } from '../add-jedi/add-jedi.component';
 import { JedisListComponent } from '../jedis-list/jedis-list.component';
 import { MidichloreanPipe } from '../midichlorean/midichlorean.pipe';
 import { TitleComponent } from '../../shared/title/title.component';
 
 @Component({
-  selector: 'sw-jedis-page',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MidichloreanPipe,
-    TitleComponent,
-    JedisListComponent,
-    AddJediComponent,
-    ToasterModule,
-  ],
-  templateUrl: 'jedis-page.component.html',
-  styles: ``,
+    selector: 'sw-jedis-page',
+    standalone: true,
+    templateUrl: 'jedis-page.component.html',
+    styles: ``,
+    imports: [
+        AsyncPipe,
+        MidichloreanPipe,
+        TitleComponent,
+        JedisListComponent,
+        AddJediComponent,
+        ToasterComponent,
+    ]
 })
 export class JedisPageComponent {
   private fillJedis() {

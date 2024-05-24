@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { Jedi } from '../jedi';
+import { Jedi, createJedi } from '../jedi';
 
 @Component({
   selector: 'sw-add-jedi',
@@ -20,7 +20,7 @@ export class AddJediComponent {
   @Output()
   jediAdded = new EventEmitter<Jedi>();
 
-  newJedi: Jedi = { name: '', midichlorean: 0 };
+  newJedi: Jedi = createJedi({ name: '', midichlorean: 0 });
   addJedi(form: NgForm) {
     if (form.valid) {
       this.jediAdded.emit({ ...this.newJedi });

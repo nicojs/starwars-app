@@ -3,8 +3,7 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'sw-menu',
-  standalone: true,
-  imports: [RouterModule],
+
   template: `
     <nav>
       <ul class="nav nav-tabs">

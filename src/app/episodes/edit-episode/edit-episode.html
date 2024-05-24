@@ -1,0 +1,49 @@
+<form class="mb-3" (ngSubmit)="submitEpisode()" [formGroup]="episodeForm">
+  <div class="mb-3">
+    <label for="titleInput" class="form-label">Title</label>
+    <input
+      name="title"
+      [formControl]="titleControl"
+      type="text"
+      class="form-control"
+      id="titleInput"
+    />
+    @if(titleControl.touched){
+    <span class="text-danger">
+      @if(titleControl.hasError('required')){ Required field }
+      @if(titleControl.hasError('forbid')){
+      <div class="text-danger">
+        Title "{{ titleControl.getError('forbid').forbidden }}" is forbidden!
+      </div>
+      }@if(titleControl.hasError('unique')){
+      <div class="text-danger">
+        Title cannot be "{{ titleControl.getError("unique").existing.title }}",
+        episode already exists ({{
+        titleControl.getError("unique").existing.releaseYear }})
+      </div>
+      }
+    </span>
+    }
+  </div>
+  <div class="mb-3">
+    <label for="releaseYearInput" class="form-label">Year</label>
+    <input
+      name="releaseYear"
+      [formControl]="yearControl"
+      type="text"
+      class="form-control"
+      id="releaseYearInput"
+    />
+    @if(yearControl.touched){
+    <span class="text-danger">
+      @if(yearControl.hasError('required')){ Required field }
+      @if(yearControl.hasError('pattern')){ Should be a year }
+    </span>
+    }
+  </div>
+  <button [disabled]="episodeForm.pending" type="submit" class="btn btn-primary me-3">
+    @if (episodeForm.pending) {
+    <span class="spinner-border spinner-border-sm"></span>
+    } Save
+  </button>
+</form>

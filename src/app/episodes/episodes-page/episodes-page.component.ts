@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, inject } from '@angular/core';
 import { TitleComponent } from '../../shared/title/title.component';
 import { EpisodesService } from '../episodes.service';
 import { CommonModule } from '@angular/common';
@@ -16,6 +16,7 @@ import { RouterModule } from '@angular/router';
       }
     </ul>`,
   imports: [TitleComponent, CommonModule, RouterModule],
+  schemas: [],
 })
 export class EpisodesPageComponent {
   episode$ = inject(EpisodesService).getAll();

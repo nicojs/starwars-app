@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { TitleComponent } from './shared/title/title.component';
 import { RouterModule } from '@angular/router';
-import { MenuComponent } from "./shared/menu/menu.component";
+import { SharedModule } from './shared/shared.module';
 
 @Component({
     selector: 'sw-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
-    imports: [RouterModule, TitleComponent, MenuComponent],
+    imports: [RouterModule, TitleComponent, SharedModule],
 })
 export class AppComponent {
   title = 'star-wars';
