@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'sw-menu',
-
   template: `
     <nav>
       <ul class="nav nav-tabs">

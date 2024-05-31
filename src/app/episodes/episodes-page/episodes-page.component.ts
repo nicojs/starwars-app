@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Component, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TitleComponent } from '../../shared/title/title.component';
 import { EpisodesService } from '../episodes.service';
 import { CommonModule } from '@angular/common';

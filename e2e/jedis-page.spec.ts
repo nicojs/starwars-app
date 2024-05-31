@@ -12,5 +12,11 @@ test.describe('Jedis Page', () => {
     const jedis = page.jedisList.getJedis();
     await expect(jedis).toHaveCount(2);
   });
-})
 
+  test('should show a list of fruits', async ({ page }) => {
+    await page.goto('http://localhost:4200');
+    const fruitList = await page.$('fruit-list');
+    const items = await fruitList!.$$('li');
+    expect(items.length).toBe(3);
+  });
+});

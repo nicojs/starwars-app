@@ -1,10 +1,9 @@
 import {
   Component,
-  EventEmitter,
-  Output,
   effect,
   inject,
   input,
+  output,
 } from '@angular/core';
 import {
   NonNullableFormBuilder,
@@ -31,15 +30,12 @@ input.ng-valid.ng-touched {
 })
 export class EditEpisodeComponent {
   episode = input.required<Episode>();
-
-  @Output()
-  episodeEdit = new EventEmitter<Episode>();
+  episodeEdit = output<Episode>()
 
   constructor() {
     effect(() => {
       const { id, ...episodeValues } = this.episode();
       this.episodeForm.setValue(episodeValues);
-      console.log('Nieuwe episode', this.episode());
     });
     this.episodeForm.valueChanges.subscribe((v) => {
       console.log('changes', v);

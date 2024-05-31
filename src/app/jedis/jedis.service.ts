@@ -17,7 +17,7 @@ export class JedisService {
   }
 
   add(jedi: Jedi) {
-    return this.http.post(this.url, jedi);
+    return this.http.post<Jedi>(this.url, jedi);
   }
 }
 

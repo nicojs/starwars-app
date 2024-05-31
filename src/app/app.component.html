@@ -2,11 +2,13 @@
   <div class="row">
     <div class="col">
       <sw-title
-        >Star-wars <small>({{ x }}, {{ y }})</small></sw-title
+        ><span [(swContent)]="title"></span> <small>({{ x }}, {{ y }})</small></sw-title
       >
+      {{ title() }}
+
       <sw-menu></sw-menu>
       <router-outlet></router-outlet>
-
+      <h2 swBorder="dotted 2px black" swAttract>test</h2>
     </div>
   </div>
 </div>

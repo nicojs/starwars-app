@@ -4,7 +4,7 @@ import {
 } from '@angular/common/http/testing';
 import { JedisService } from './jedis.service';
 import { TestBed } from '@angular/core/testing';
-import { Jedi } from './jedi';
+import { Jedi, createJedi } from './jedi';
 import { lastValueFrom } from 'rxjs';
 import { BACKEND_URL } from '../injection-tokens';
 import { appConfig } from '../app.config';
@@ -34,7 +34,7 @@ describe('JedisService', () => {
         req.headers.get('Auth-Token') === '123'
       );
     });
-    const expectedJedis: Jedi[] = [{ name: 'Foo', midichlorean: 12 }];
+    const expectedJedis: Jedi[] = [createJedi({ name: 'Foo', midichlorean: 12 })];
     request.flush(expectedJedis);
 
     // Assert
